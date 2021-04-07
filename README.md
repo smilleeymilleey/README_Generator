@@ -1,1 +1,1 @@
-# README_Generator
+{"title":"readme generator","description":"generates readme files in the terminal","install":"node "}
