@@ -24,9 +24,16 @@ inquirer
     
   
   .then(answers => {
- fs.writeFile('README.md', JSON.stringify(answers), function(err) {
-    if (err) return console.log(err);
-    console.log('wrote to file');
+    // return new Promise ((resolve, reject) => {
+      
+      let mdFile = `# The Title is ${answers.title}
+      ## the description is ${answers.description}`
+    fs.writeFile('README.md', mdFile, function(err) {
+  //  resolve(console.log('wrote to file'))
+
+  //  reject(err)
+    
  
   })
-  })
+})
+  // })
