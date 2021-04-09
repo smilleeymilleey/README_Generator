@@ -1,9 +1,17 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const gen = require("./utils/generateMarkdown");
 const licenseList = ["MIT", "APACHE_2.0", "GPL_3.0", "BSD_3", "None"];
 
 
-inquirer
+start();
+
+function start(){
+  questionUsers();
+}
+
+function questionUsers() {
+  inquirer
   .prompt([
     {
         type: "input",
@@ -59,30 +67,19 @@ inquirer
   
    ])
    
+      .then((data) => {
+        let fileString = gen.generateMarkdown(data);
+        writeToFile(fileString);
+      });
 
+    }
+
+    function writeToFile(fileString) {
+      const fileName = "README.md";
     
-  
-  .then(answers => {
-    // return new Promise ((resolve, reject) => {
-      
-      let mdFile = `
-      # ${answers.title}
-      ##  ${answers.description}
+      fs.writeFile(fileName, fileString, (err) =>
+        err ? console.log(err) : console.log("Generating README.md...")
+      );
+    }
 
-      ### Table Of Contents [Headers](#)
-      
-      
-      
-      `
-
-
-
-    fs.writeFile('README.md', mdFile, function(err) {
-  //  resolve(console.log('wrote to file'))
-
-  //  reject(err)
-    
  
-  })
-})
-  // })
