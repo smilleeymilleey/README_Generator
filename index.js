@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const licenseList = ["MIT", "APACHE_2.0", "GPL_3.0", "BSD_3", "None"];
+
+
 inquirer
   .prompt([
     {
@@ -17,9 +20,45 @@ inquirer
        message: "How do you install your application?",
        name: "install",
      }, 
-    
+     {
+      type: "input",
+      name: "usage",
+      message: "Enter instructions and examples for usage: ",
+    },
+    {
+      type: "input",
+      name: "filepath",
+      message: "Enter the path to the screenshot: ",
+    },
+    {
+      type: "input",
+      name: "contributers",
+      message: "Enter a list of contributers: ",
+    },
+    {
+      type: "input",
+      name: "test",
+      message: "Enter test instructions: ",
+    },
+    {
+      type: "list",
+      name: "license",
+      message: "Choose a license: ",
+      choices: licenseList,
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "Enter your email address: ",
+    },
+    {
+      type: "input",
+      message: "Enter your github username: ",
+      name: "github",
+    },
+  
    ])
-    /* Pass your questions in here */
+   
 
     
   
