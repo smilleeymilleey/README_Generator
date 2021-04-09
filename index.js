@@ -26,8 +26,18 @@ inquirer
   .then(answers => {
     // return new Promise ((resolve, reject) => {
       
-      let mdFile = `# The Title is ${answers.title}
-      ## the description is ${answers.description}`
+      let mdFile = `
+      # ${answers.title}
+      ##  ${answers.description}
+
+      ### Table Of Contents [Headers](#)
+      
+      
+      
+      `
+
+
+
     fs.writeFile('README.md', mdFile, function(err) {
   //  resolve(console.log('wrote to file'))
 
